@@ -2,63 +2,90 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-}
-.container{
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(image/Background.jpeg);
-    background-position: center;
-    background-size: cover;
-    padding-left: 8%;
-    padding-right: 8%;
     box-sizing: border-box;
 }
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(image/Background.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed; 
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
 .navbar{
-    height: 12%;
+    height: 80px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    position: relative;
 }
+
 .logo{
     width: 50px;
     cursor: pointer;
 }
+
 .menu-icon{
     width: 30px;
     cursor: pointer;
-    margin-left: 40px;
+    margin-left: 20px;
+    display: none; 
 }
+
 nav{
-flex: 1;
-text-align: right;
+    flex: 1;
+    text-align: right;
+    transition: max-height 0.5s ease;
 }
+
 nav ul li{
     list-style: none;
     display: inline-block;
     margin-left: 60px;
 }
+
 nav ul li a{
     text-decoration: none;
     color: white;
     font-size: 13px;
 }
+
 .row{
     display: flex;
-    height: 88%;
+    min-height: calc(100vh - 80px);
     align-items: center;
+    flex-wrap: wrap;
+    padding: 30px 0;
 }
+
 .col{
     flex-basis: 50%;
+}
+
+.cards-col {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-end;
 }
 
 h1{
     color: white;
     font-size: 100px;
+    text-transform: uppercase;
 }
+
 p{
     color: white;
     font-size: 11px;
     line-height: 15px;
 }
+
 button{
     width: 180px;
     color: #000;
@@ -68,45 +95,93 @@ button{
     border: 0;
     border-radius: 20px;
     outline: none;
-    margin-top: 3opx;
+    margin-top: 30px; 
+    cursor: pointer;
 }
+
 .card {
-  width: 200px;                  /* Sets the card's width */
-  height: 230px;                 /* Sets the card's height */
-  display: inline-block;         /* Allows cards to sit side-by-side in a row */
-  border-radius: 10px;           /* Rounds the corners of the card */
-  padding: 15px 25px;            /* Adds inner spacing (top/bottom, left/right) */
-  box-sizing: border-box;        /* Includes padding and borders in total width/height */
-  cursor: pointer;               /* Changes the mouse cursor to a hand on hover */
-  margin: 10px 15px;             /* Adds outer spacing around the card */
-  background-position: center;   /* Centers the background image */
-  background-size: cover;        /* Scales the background image to fill the card */
-  transition: transfrom 0.5s;    /* Smooths out animations (like a hover zoom effect) */
-}
-.card1{
-   background-image: url(image/pic-1.jpeg);
+    width: 200px;                  
+    height: 230px;         
+    border-radius: 10px;           
+    padding: 15px 25px;          
+    cursor: pointer;               
+    background-position: center;   
+    background-size: cover;        
+    transition: transform 0.5s; 
 }
 
-.card2{
-   background-image: url(image/pic-2.jpeg);
-}
-
-.card3{
-   background-image: url(image/pic-3.jpeg);
-}
-
-.card4{
-   background-image: url(image/pic-4.jpeg);
-}
+.card1{ background-image: url(image/pic-1.jpeg); }
+.card2{ background-image: url(image/pic-2.jpeg); }
+.card3{ background-image: url(image/pic-3.jpeg); }
+.card4{ background-image: url(image/pic-4.jpeg); }
 
 .card:hover{
     transform: translateY(-10px);
 }
+
 h5{
-color: #fff;
-text-shadow: 0,0,5px #999;
+    color: #fff;
+    text-shadow: 0 0 5px #999;
 }
+
 .card p{
     text-shadow: 0 0 5px #000;
     font-size: 8px;
+}
+
+
+@media (max-width: 992px) {
+    h1 {
+        font-size: 60px;
+    }
+    .col {
+        flex-basis: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .cards-col {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+   
+    nav {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        overflow: hidden;
+        text-align: center;
+        z-index: 99;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 15px 0;
+    }
+
+    .menu-icon {
+        display: block; 
+    }
+
+    h1 {
+        font-size: 40px; 
+    }
+
+    .cards-col {
+        justify-content: center;
+    }
+
+    .card {
+        width: 100%; 
+        max-width: 260px;
+        margin: 5px auto;
+    }
 }
